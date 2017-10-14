@@ -20,7 +20,7 @@ defmodule MonzoSplit.Mixfile do
   def application do
     [
       mod: {MonzoSplit.Application, []},
-      extra_applications: [:logger, :runtime_tools, :oauth2, :deppie, :floki]
+      extra_applications: [:logger, :runtime_tools, :oauth2]
     ]
   end
 
@@ -41,7 +41,6 @@ defmodule MonzoSplit.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:drab, "~> 0.5"},
       {:oauth2, "~> 0.9"},
       {:distillery, "~> 1.0.0"}
     ]
