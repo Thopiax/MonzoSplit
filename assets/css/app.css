@@ -1,1 +1,26 @@
 /* This file is for your main application css. */
+
+.boxes {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 500px) {
+  .boxes {
+    flex-direction: column;
+  }
+}
+
+.box {
+  width: 80%;
+  max-width: 300px;
+  margin: 5%;
+  height: auto;
+  min-height: 300px;
+  background: black;
+  position: relative;
+}
+
+#monzo_box {
+  float: left;
+}
