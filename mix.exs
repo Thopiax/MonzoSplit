@@ -20,7 +20,7 @@ defmodule MonzoSplit.Mixfile do
   def application do
     [
       mod: {MonzoSplit.Application, []},
-      extra_applications: [:logger, :runtime_tools, :drab, :oauth2]
+      extra_applications: [:logger, :runtime_tools, :oauth2, :deppie, :floki]
     ]
   end
 
