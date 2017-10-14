@@ -22,6 +22,7 @@ config :monzo_split, MonzoSplitWeb.Endpoint,
 config :logger, level: :info
 
 config :monzo_split, MonzoSplitWeb.Endpoint,
+  server: true,
   secret_key_base: "${SECRET_KEY_BASE}"
 
 # Configure your database
