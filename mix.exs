@@ -42,7 +42,8 @@ defmodule MonzoSplit.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:drab, "~> 0.5"},
-      {:oauth2, "~> 0.9"}
+      {:oauth2, "~> 0.9"},
+      {:distillery, "~> 1.0.0"}
     ]
   end
 

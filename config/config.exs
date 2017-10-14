@@ -9,7 +9,7 @@ use Mix.Config
 config :monzo_split,
   ecto_repos: [MonzoSplit.Repo],
   monzo_client_id: "${MONZO_CLIENT_ID}",
-  monzo_client_secret: "${MONZO_CLIENT_SECRET}")
+  monzo_client_secret: "${MONZO_CLIENT_SECRET}"
 
 # Configures the endpoint
 config :monzo_split, MonzoSplitWeb.Endpoint,
@@ -18,6 +18,7 @@ config :monzo_split, MonzoSplitWeb.Endpoint,
   render_errors: [view: MonzoSplitWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: MonzoSplit.PubSub,
            adapter: Phoenix.PubSub.PG2]
+
 
 # Configures Elixir's Logger
 config :logger, :console,

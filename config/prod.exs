@@ -21,6 +21,17 @@ config :monzo_split, MonzoSplitWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :monzo_split, MonzoSplitWeb.Endpoint,
+  secret_key_base: "${SECRET_KEY_BASE}"
+
+# Configure your database
+config :monzo_split, MonzoSplit.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "monzo_split_prod",
+  pool_size: 15
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
