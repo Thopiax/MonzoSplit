@@ -23,4 +23,18 @@
 
 #monzo {
   float: left;
+  background: url("https://monzo.com/static/images/mondo-mark-01.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.disclaimer {
+  text-align: center;
+  color: darkgrey;
+}
+
+.disclaimer a {
+  color: darkgrey;
+  text-decoration: underline;
 }

@@ -6,4 +6,10 @@
     <div class="box" id="monzo"></div>
     <div class="box" id="splitwise"></div>
   </div>
+
+  <div class="disclaimer">
+    We are in no way affiliated with Monzo or Splitwise. <br />
+    This was built using their APIs. <br />
+    <a href="https://github.com/Thopiax/MonzoSplit">PRs welcome :)</a>
+  </div>
 </div>
