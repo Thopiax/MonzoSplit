@@ -27,10 +27,10 @@ config :monzo_split, MonzoSplitWeb.Endpoint,
 # Configure your database
 config :monzo_split, MonzoSplit.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "monzo_split_prod",
-  pool_size: 15
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 10
 
 # ## SSL Support
 #
