@@ -9,7 +9,7 @@ defmodule MonzoSplitWeb.MonzoController do
 
   def complete_monzo_oauth(conn, %{"code" => code}) do
     client = MonzoOAuthStrategy.get_token!(code: code)
-    
+
     conn
       |> assign(:monzo_done, true)
       |> render("index.html")
