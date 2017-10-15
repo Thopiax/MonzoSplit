@@ -14,8 +14,4 @@ defmodule MonzoSplitWeb.PageCommander do
   #   set_prop socket, "div.jumbotron h2", innerText: "This page has been drabbed"
   # end
 
-  def handle_splitwise_click(socket, _sender) do
-  end
-  def handle_monzo_click(socket, _sender) do
-  end
 end

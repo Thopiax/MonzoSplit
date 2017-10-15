@@ -3,7 +3,8 @@
   <p class="lead">Click on the boes below to<br /> login to your Monzo and Splitwise accounts.</p>
 
   <div class="boxes">
-    <div drab-event="click" drab-handler="handle_monzo_click" class="box" id="monzo"></div>
-    <div drab-event="click" drab-handler="handle_splitwise_click" class="box" id="splitwise"></div>
+    <a class="box" href="<%= monzo_path(@conn, :start_monzo_oauth) %>">
+    </a>
+    <div class="box" id="splitwise"></div>
   </div>
 </div>

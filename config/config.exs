@@ -8,8 +8,8 @@ use Mix.Config
 # General application configuration
 config :monzo_split,
   ecto_repos: [MonzoSplit.Repo],
-  monzo_client_id: "${MONZO_CLIENT_ID}",
-  monzo_client_secret: "${MONZO_CLIENT_SECRET}")
+  monzo_client_id: System.get_env("MONZO_CLIENT_ID"),
+  monzo_client_secret: System.get_env("MONZO_CLIENT_SECRET")
 
 # Configures the endpoint
 config :monzo_split, MonzoSplitWeb.Endpoint,
