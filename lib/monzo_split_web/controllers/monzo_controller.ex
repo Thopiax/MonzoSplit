@@ -15,12 +15,12 @@ defmodule MonzoSplitWeb.MonzoController do
 
   def start_monzo_oauth(conn, _params) do
     # Generate the authorization URL and redirect the user to the provider.
-    url = OAuth2.Client.authorize_url!(client)
+    url = OAuth2.Client.authorize_url!(client())
     redirect conn, external: url
   end
 
   def complete_monzo_oauth(conn, %{"code" => code}) do
-    client = OAuth2.Client.get_token!(client, code: code)
+    OAuth2.Client.get_token!(client(), code: code)
     conn
   end
 end
