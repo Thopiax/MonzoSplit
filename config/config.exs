@@ -9,7 +9,6 @@ use Mix.Config
 config :monzo_split,
   ecto_repos: [MonzoSplit.Repo],
   monzo: %{
-    module: MonzoSplitWeb.MonzoController,
     client_id: System.get_env("MONZO_CLIENT_ID"),
     client_secret: System.get_env("MONZO_CLIENT_SECRET"),
     website: "https://api.monzo.com",
