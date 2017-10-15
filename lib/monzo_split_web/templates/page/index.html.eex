@@ -3,8 +3,15 @@
   <p class="lead">Click on the boes below to<br /> login to your Monzo and Splitwise accounts.</p>
 
   <div class="boxes">
-    <a class="box" href="<%= monzo_path(@conn, :start_monzo_oauth) %>">
+    <a class="box" href="<%= monzo_path(@conn, :start_monzo_oauth) %>" id="monzo">
     </a>
+
     <div class="box" id="splitwise"></div>
+  </div>
+
+  <div class="disclaimer">
+    We are in no way affiliated with Monzo or Splitwise. <br />
+    This was built using their APIs. <br />
+    <a href="https://github.com/Thopiax/MonzoSplit">PRs welcome :)</a>
   </div>
 </div>

@@ -21,6 +21,18 @@ config :monzo_split, MonzoSplitWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :monzo_split, MonzoSplitWeb.Endpoint,
+  server: true,
+  secret_key_base: "${SECRET_KEY_BASE}"
+
+# Configure your database
+config :monzo_split, MonzoSplit.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 10
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -61,4 +73,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"

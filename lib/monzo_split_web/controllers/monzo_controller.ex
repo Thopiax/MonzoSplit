@@ -1,7 +1,6 @@
 defmodule MonzoSplitWeb.MonzoController do
   use MonzoSplitWeb, :controller
   require OAuth2
-  require Monzo
 
   def client do
     OAuth2.Client.new([

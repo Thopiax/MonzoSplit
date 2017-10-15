@@ -17,10 +17,27 @@
   margin: 5%;
   height: auto;
   min-height: 300px;
-  background: black;
   position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #monzo {
   float: left;
+  background-image: url("https://monzo.com/static/images/mondo-mark-01.png");
+}
+
+#splitwise {
+  background-image: url("https://dx0qysuen8cbs.cloudfront.net/assets/fat_rabbit/logo-d23d9f9f3a93162ac760371c8e22fea7e14a9d8491b477e7925e551b14172ada.png");
+}
+
+.disclaimer {
+  text-align: center;
+  color: darkgrey;
+}
+
+.disclaimer a {
+  color: darkgrey;
+  text-decoration: underline;
 }
