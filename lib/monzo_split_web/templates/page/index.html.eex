@@ -7,6 +7,8 @@
     <div class="box" id="splitwise"></div>
   </div>
 
+  <button type="button" class="disabled button center" name="button">Complete</button>
+
   <div class="disclaimer">
     We are in no way affiliated with Monzo or Splitwise. <br />
     This was built using their APIs. <br />

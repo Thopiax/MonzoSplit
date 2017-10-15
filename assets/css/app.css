@@ -11,16 +11,43 @@
   }
 }
 
+.center {
+  text-align: center;
+  margin: auto;
+}
+
+.button {
+  padding: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+  margin-bottom: 1em;
+}
+
+.disabled:active {
+  color: initial;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .box {
   width: 80%;
   max-width: 300px;
   margin: 5%;
   height: auto;
   min-height: 300px;
+  border: none;
+  cursor: pointer;
   position: relative;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.box:hover {
+  border-bottom: 5px solid darkgrey;
 }
 
 #monzo {
