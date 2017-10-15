@@ -1,4 +1,4 @@
-defmodule MonzoSplitWeb.SplitwiseController do
+defmodule MonzoSplitWeb.Splitwise.SplitwiseController do
   use MonzoSplitWeb, :controller
   alias MonzoSplitWeb.OAuthStrategy
 

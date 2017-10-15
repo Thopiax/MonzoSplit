@@ -23,10 +23,14 @@ defmodule MonzoSplitWeb.Router do
   scope "/api", MonzoSplitWeb do
     pipe_through :api
 
-    get "/oauth/monzo/start",    MonzoController, :start_oauth
-    get "/oauth/monzo/complete", MonzoController, :complete_oauth
+    scope "/monzo", Monzo do
+      get "/oauth/start",    MonzoController, :start_oauth
+      get "/oauth/complete", MonzoController, :complete_oauth
+    end
 
-    get "/oauth/splitwise/start",    SplitwiseController, :start_oauth
-    get "/oauth/splitwise/complete", SplitwiseController, :complete_oauth
+    scope "/spliwise", Splitwise do
+      get "/oauth/start",    SplitwiseController, :start_oauth
+      get "/oauth/complete", SplitwiseController, :complete_oauth
+    end
   end
 end
