@@ -20,7 +20,10 @@ defmodule MonzoSplitWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", MonzoSplitWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", MonzoSplitWeb do
+    pipe_through :api
+
+    get "/monzo_oauth/start", MonzoController, :start_monzo_oauth
+    get "/monzo_oauth/complete", MonzoController, :complete_monzo_oauth
+  end
 end
