@@ -1,24 +1,26 @@
 defmodule MonzoSplitWeb.OAuthStrategy do
   use OAuth2.Strategy
 
-  def client do
+  def client(strategy) when strategy in [:monzo, :splitwise] do
+    oauth = Application.get_env(:monzo_split, strategy)
+
     OAuth2.Client.new([
-      strategy: __MODULE__,
-      client_id: Application.get_env(:monzo_split, :monzo_client_id),
-      client_secret: Application.get_env(:monzo_split, :monzo_client_secret),
-      site: "https://api.monzo.com",
-      authorize_url: "https://auth.getmondo.co.uk",
-      token_url: "https://api.monzo.com/oauth2/token",
-      redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/monzo_oauth/complete"
+      strategy:      __MODULE__,
+      client_id:     oauth.client_id,
+      client_secret: oauth.client_secret,
+      site:          oauth.website,
+      authorize_url: oauth.authorize_url,
+      token_url:     oauth.token_url,
+      redirect_uri:  oauth.redirect_uri
     ])
   end
 
-  def authorize_url! do
-    OAuth2.Client.authorize_url!(client())
+  def authorize_url!(strategy) do
+    OAuth2.Client.authorize_url!(client(strategy))
   end
 
-  def get_token!(params \\ [], headers \\ [], opts \\ []) do
-    OAuth2.Client.get_token!(client(), params, headers, opts)
+  def get_token!(strategy, params \\ [], headers \\ [], opts \\ []) do
+    OAuth2.Client.get_token!(client(strategy), params, headers, opts)
   end
 
   def authorize_url(client, params) do

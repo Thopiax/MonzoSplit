@@ -8,8 +8,31 @@ use Mix.Config
 # General application configuration
 config :monzo_split,
   ecto_repos: [MonzoSplit.Repo],
-  monzo_client_id: System.get_env("MONZO_CLIENT_ID"),
-  monzo_client_secret: System.get_env("MONZO_CLIENT_SECRET")
+  monzo: %{
+    module: MonzoSplitWeb.MonzoController,
+    client_id: System.get_env("MONZO_CLIENT_ID"),
+    client_secret: System.get_env("MONZO_CLIENT_SECRET"),
+    website: "https://api.monzo.com",
+    authorize_url: "https://auth.getmondo.co.uk",
+    token_url: "https://api.monzo.com/oauth2/token",
+    redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/oauth/monzo/complete"
+  },
+  splitwise: %{
+    client_id: System.get_env("SPLITWISE_CLIENT_ID"),
+    client_secret: System.get_env("SPLITWISE_CLIENT_SECRET"),
+    website: "https://secure.splitwise.com",
+    authorize_url: "https://secure.splitwise.com/oauth/authorize",
+    token_url: "https://secure.splitwise.com/oauth/token",
+    redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/oauth/splitwise/complete"
+  }
+
+
+config :monzo_split, MonzoSplitWeb.SplitwiseController,
+  client_id: System.get_env("SPLITWISE_CLIENT_ID"),
+  client_secret: System.get_env("SPLITWISE_CLIENT_SECRET"),
+  website: "https://secure.splitwise.com",
+  authorize_url: "https://secure.splitwise.com/authorize",
+  token_url: "https://api.monzo.com/oauth2/token"
 
 # Configures the endpoint
 config :monzo_split, MonzoSplitWeb.Endpoint,

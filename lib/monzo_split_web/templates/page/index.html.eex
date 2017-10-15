@@ -3,10 +3,10 @@
   <p class="lead">Click on the boes below to<br /> login to your Monzo and Splitwise accounts.</p>
 
   <div class="boxes">
-    <a class="box" href="<%= monzo_path(@conn, :start_monzo_oauth) %>" id="monzo">
+    <a class="box" href="<%= monzo_path(@conn, :start_oauth) %>" id="monzo">
     </a>
 
-    <div class="box" id="splitwise"></div>
+    <a class="box" href="<%= splitwise_path(@conn, :start_oauth) %>" id="splitwise"></a>
   </div>
 
   <button type="button" class="disabled button center" name="button">Complete</button>
