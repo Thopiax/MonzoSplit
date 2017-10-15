@@ -1,4 +1,4 @@
-defmodule MonzoOAuthStrategy do
+defmodule MonzoSplitWeb.OAuthStrategy do
   use OAuth2.Strategy
 
   def client do
@@ -9,7 +9,7 @@ defmodule MonzoOAuthStrategy do
       site: "https://api.monzo.com",
       authorize_url: "https://auth.getmondo.co.uk",
       token_url: "https://api.monzo.com/oauth2/token",
-      redirect_uri: "https://b8ccf680.ngrok.io/api/monzo_oauth/complete"
+      redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/monzo_oauth/complete"
     ])
   end
 
