@@ -3,6 +3,8 @@ defmodule MonzoSplitWeb.AuthController do
   require Phoenix.ConnTest
   alias MonzoSplitWeb.OAuthStrategy
 
+  plug :fetch_session
+
   def start_monzo_oauth(conn, _params),     do: start_oauth(conn, :monzo)
   def start_splitwise_oauth(conn, _params), do: start_oauth(conn, :splitwise)
 
@@ -23,17 +25,17 @@ defmodule MonzoSplitWeb.AuthController do
     })
 
     conn
-      |> assign(:monzo_token, token)
+      |> put_session(:monzo_token, token)
       |> redirect(to: "/")
   end
 
   def complete_splitwise_oauth(conn, params), do: complete_oauth(conn, params, :splitwise)
 
   defp complete_oauth(conn, %{"code" => code}, strategy) do
-    token = OAuthStrategy.get_token!(strategy, code: code)
+    %OAuth2.Client{token: token} = OAuthStrategy.get_token!(strategy, code: code)
 
     conn
-      |> assign(:splitwise_token, token)
+      |> put_session(:splitwise_token, token)
       |> redirect(to: "/")
   end
 end
