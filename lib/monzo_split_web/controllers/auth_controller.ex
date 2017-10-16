@@ -23,7 +23,7 @@ defmodule MonzoSplitWeb.AuthController do
 
     response = OAuth2.Client.post!(client, "/webhooks", %{
       account_id: account["id"],
-      url: "https://b8ccf680.ngrok.io/api/monzo/transaction"
+      url: "#{Application.get_env(:monzo_split, :app_url)}/api/monzo/transaction"
     })
 
     IO.inspect(response)

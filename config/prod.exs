@@ -15,8 +15,12 @@ use Mix.Config
 # which you typically run after static files are built.
 config :monzo_split, MonzoSplitWeb.Endpoint,
   load_from_system_env: true,
+  app_url: "https://naive-tepid-koalabear.gigalixirapp.com",
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
+
+  config :monzo_split,
+    app_url: "localhost:4000"
 
 # Do not print debug messages in production
 config :logger, level: :info

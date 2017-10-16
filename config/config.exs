@@ -14,7 +14,7 @@ config :monzo_split,
     website: "https://api.monzo.com",
     authorize_url: "https://auth.getmondo.co.uk",
     token_url: "https://api.monzo.com/oauth2/token",
-    redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/oauth/monzo/complete"
+    redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/api/monzo/oauth/complete"
   },
   splitwise: %{
     client_id: "${SPLITWISE_CLIENT_ID}",
@@ -22,7 +22,7 @@ config :monzo_split,
     website: "https://secure.splitwise.com",
     authorize_url: "https://secure.splitwise.com/oauth/authorize",
     token_url: "https://secure.splitwise.com/oauth/token",
-    redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/oauth/splitwise/complete"
+    redirect_uri: "https://naive-tepid-koalabear.gigalixirapp.com/api/splitwise/oauth/complete"
   }
 
 

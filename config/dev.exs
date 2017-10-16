@@ -14,6 +14,9 @@ config :monzo_split, MonzoSplitWeb.Endpoint,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../assets", __DIR__)]]
 
+config :monzo_split,
+  app_url: "localhost:4000"
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
