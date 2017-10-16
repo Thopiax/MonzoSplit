@@ -26,6 +26,7 @@ defmodule MonzoSplitWeb.AuthController do
       |> assign(:monzo_token, token)
       |> redirect(to: "/")
   end
+
   def complete_splitwise_oauth(conn, params), do: complete_oauth(conn, params, :splitwise)
 
   defp complete_oauth(conn, %{"code" => code}, strategy) do
