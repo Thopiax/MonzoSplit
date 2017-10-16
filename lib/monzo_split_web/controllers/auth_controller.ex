@@ -1,5 +1,6 @@
 defmodule MonzoSplitWeb.AuthController do
   use MonzoSplitWeb, :controller
+  require Phoenix.ConnTest
   alias MonzoSplitWeb.OAuthStrategy
 
   def start_monzo_oauth(conn, _params),     do: start_oauth(conn, :monzo)
@@ -11,34 +12,28 @@ defmodule MonzoSplitWeb.AuthController do
   end
 
   def complete_monzo_oauth(conn, %{"code" => code}) do
-    client = MonzoOAuthStrategy.get_token!(code: code)
-    %{"accounts" => accounts} = OAuth2.Client.get!(client, "/accounts").body
-
-    IO.inspect(accounts)
+    token = MonzoOAuthStrategy.get_token!(code: code)
+    %{"accounts" => accounts} = OAuth2.Client.get!(token, "/accounts").body
 
     [account | _ ] = accounts
 
-    IO.inspect(account)
-    IO.inspect(account["id"])
-
-    response = OAuth2.Client.post!(client, "/webhooks", %{
+    response = OAuth2.Client.post!(token, "/webhooks", %{
       account_id: account["id"],
       url: "#{Application.get_env(:monzo_split, :app_url)}/api/monzo/transaction"
     })
 
-    IO.inspect(response)
-
     conn
-      |> assign(:monzo_done, true)
-      |> render("index.html")
+      |> assign(:monzo_token, token)
+      |> redirect(to: "/")
   end
   def complete_splitwise_oauth(conn, params), do: complete_oauth(conn, params, :splitwise)
 
   defp complete_oauth(conn, %{"code" => code}, strategy) do
+    IO.inspect code
     token = OAuthStrategy.get_token!(strategy, code: code)
 
     conn
-      |> assign(:monzo_token, token)
-      |> render("index.html")
+      |> assign(:splitwise_token, token)
+      |> redirect(to: "/")
   end
 end
