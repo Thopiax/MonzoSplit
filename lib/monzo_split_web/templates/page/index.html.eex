@@ -12,8 +12,8 @@
   <button type="button" class="disabled button center" name="button">Complete</button>
 
   <div class="disclaimer">
-    We are in no way affiliated with Monzo or Splitwise. <br />
-    This was built using their APIs. <br />
+    Built with the Monzo and Splitwise APIs by Norbert, Rafa and <a href="https://images.halloweencostumes.com/products/30211/1-1/mens-vintage-milkman-costume.jpg" >Jim</a><br />
+    We are in no way affiliated with Monzo or Splitwise.<br />
     <a href="https://github.com/Thopiax/MonzoSplit">PRs welcome :)</a>
   </div>
 </div>
