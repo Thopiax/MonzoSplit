@@ -29,7 +29,6 @@ defmodule MonzoSplitWeb.AuthController do
   def complete_splitwise_oauth(conn, params), do: complete_oauth(conn, params, :splitwise)
 
   defp complete_oauth(conn, %{"code" => code}, strategy) do
-    IO.inspect code
     token = OAuthStrategy.get_token!(strategy, code: code)
 
     conn
