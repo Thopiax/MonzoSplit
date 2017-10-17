@@ -10,10 +10,10 @@ defmodule MonzoSplitWeb.MonzoController do
   end
 
   def complete_oauth(conn, %{"code" => code}) do
-    with token                        =  OAuthStrategy.get_token!(:monzo, code: code),
-         %{"accounts" => [account|_]} <- OAuth2.Client.get!(token, "/accounts").body
+    with %OAuth2.Client{token: token} <- OAuthStrategy.get_token!(:monzo, code: code),
+         %{"accounts" => [_account|_]} <- OAuth2.Client.get!(token, "/accounts").body
     do
-      response = setup_webhook(token, account)
+      # response = setup_webhook(token, account)
       conn
         |> put_session(:monzo_token, token)
         |> redirect(to: "/")
