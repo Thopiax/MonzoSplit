@@ -17,6 +17,9 @@ config :monzo_split, MonzoSplitWeb.Endpoint,
 config :monzo_split,
   app_url: "localhost:4000"
 
+config :oauth2,
+  debug: true
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

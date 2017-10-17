@@ -6,10 +6,10 @@
   </p>
 
   <div class="boxes">
-    <a class="box" href="<%= auth_path(@conn, :start_monzo_oauth) %>" id="monzo">
+    <a class="box" href="<%= monzo_path(@conn, :start_oauth) %>" id="monzo">
     </a>
 
-    <a class="box" class='<%= unless is_nil(@tokens.splitwise_token), do: "complete"%>' href="<%= auth_path(@conn, :start_splitwise_oauth) %>" id="splitwise"></a>
+    <a class="box" class='<%= unless is_nil(@tokens.splitwise_token), do: "complete"%>' href="<%= splitwise_path(@conn, :start_oauth) %>" id="splitwise"></a>
   </div>
 
   <button type="button" class="disabled button center" name="button">Complete</button>
