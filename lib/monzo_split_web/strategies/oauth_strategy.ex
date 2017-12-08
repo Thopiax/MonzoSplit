@@ -27,6 +27,11 @@ defmodule MonzoSplitWeb.OAuthStrategy do
     OAuth2.Strategy.AuthCode.authorize_url(client, params)
   end
 
+  def post_form(client, url, data) do
+    HTTPoison.post(client.site <> url, {:form, Map.to_list data}, ["Authorization": "Bearer #{client.token.access_token}", "Content-Type": "application/x-www-form-urlencoded"])
+  end
+
+
   def get_token(client, params, headers) do
     client
     |> put_param(:client_secret, client.client_secret)

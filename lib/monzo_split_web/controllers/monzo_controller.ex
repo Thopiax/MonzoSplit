@@ -10,21 +10,34 @@ defmodule MonzoSplitWeb.MonzoController do
   end
 
   def complete_oauth(conn, %{"code" => code}) do
-    with %OAuth2.Client{token: token} <- OAuthStrategy.get_token!(:monzo, code: code),
-         %{"accounts" => [_account|_]} <- OAuth2.Client.get!(token, "/accounts").body
+    with client = %OAuth2.Client{token: token} <- OAuthStrategy.get_token!(:monzo, code: code),
+         %{"accounts" => [account|_]}          <- OAuth2.Client.get!(client, "/accounts").body
     do
-      # response = setup_webhook(token, account)
+      setup_webhook(token, client, account)
       conn
-        |> put_session(:monzo_token, token)
-        |> redirect(to: "/")
+      |> put_session(:monzo_token, token)
+      |> redirect(to: "/")
     end
   end
 
-  def setup_webhook(token, account) do
-    body = JSON.encode!(%{
-      account_id: account["id"],
-      url: "#{Application.get_env(:monzo_split, :app_url)}/api/monzo/webhook"
-    })
-    OAuth2.Client.post(token, "/webhooks", body)
+  def setup_webhook(token, client, account) do
+    body = %{url: MonzoSplit.webhook_url} |> oauth_body(account)
+    case OAuthStrategy.post_form(client, "/webhooks", body) do
+      {:ok, %HTTPoison.Response{body: body}} ->
+        decoded_body = body |> Poison.decode!
+        if webhook_id = decoded_body["webhook"]["id"] do
+          Monzo.create_user(token, account, webhook_id)
+        else
+          raise HTTPoison.Error
+        end
+      _other ->
+        raise HTTPoison.Error
+    end
   end
+
+  defp oauth_body(body, account) do
+    body
+    |> Map.put(:account_id, account["id"])
+  end
+
 end

@@ -7,4 +7,8 @@ defmodule MonzoSplit do
   if it comes from the database, an external API or others.
   """
 
+  def webhook_url do
+    Applicatio.get_env(:monzo_split, :app_url) <> "/api/monzo/webhook"
+  end
+
 end
